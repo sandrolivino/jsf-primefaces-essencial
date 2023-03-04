@@ -1,0 +1,49 @@
+================= Iniciando um repositório
+
+Iniciar o Git e adicionar no repositório GITHUB (Web).
+
+Dentro do diretório do projeto: Botão direito + Git Bash Here
+
+No terminado do git:
+$ git init -b master
+
+Configurar o usuário e o e-mail do GITHUB:
+$ git config --global user.email "sandro.livino@gmail.com" E 
+$ git config --global user.username "Sandro Livino"
+
+Criar o repositório:
+$ git remote add origin https://github.com/sandrolivino/api-correios.git
+Agora é a hora de adicionar os arquivos, "commitar" e "pushar".
+
+git add .
+git commit -m "meu primeiro commit"
+git push -u origin master
+
+
+
+
+================== Passos para trabalhar em uma branch separada da branch master
+1 - logado na branch master, criar a nova branch: git branch staging
+2 - fazer o checkout para a nova branch: git checkout staging
+
+**** Dá pra fazer tudo em 01 só comando: ****
+git checkout -b staging (staging ou o nome da funcionalidade) master
+Com esse comando o GIT cria uma branch staging com base na branch master e já
+faz o checkout direto para a nova branch staging
+
+**********************************************
+
+3 - trabalhar no código
+4 - finalizado o trabalho: git add .
+5 - comitar: git commit - m "mensagem sobre a alteração"
+6 - subir a branch para o servidor web: git push
+(se houver dúvida sobre qual usuário web está utilizando, usar os comandos: git config --global user.email)
+7 - fazer o merge do código staging em master: git checkout master  + git pull (para puxar possíveis atualizações da master por outros usuários)
+git merge staging
+8 - subir a branch master para o servidor web: git push
+
+
+Configuração do serviço de setup da base de dados dos correios
+
+
+
