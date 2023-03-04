@@ -1,0 +1,3 @@
+Atalhos do Eclipse
+
+CTRL + SHIFT + f: para formatar o arquivo
