@@ -6,3 +6,4 @@ CTRL + m: 			expande a área de edição da IDE.
 CTRL + s: 			salva o arquivo alterado
 CTRL + SHIFT + s: 	salva todos os arquivos alterados
 ALT + SHIFT + s: 	atalho para a função Generate Gatters and Setters, Generate Equals, toString() etc. 
+CTRL + SHIFT + r:	Open Resource.. Para pesquisar arquivos.
