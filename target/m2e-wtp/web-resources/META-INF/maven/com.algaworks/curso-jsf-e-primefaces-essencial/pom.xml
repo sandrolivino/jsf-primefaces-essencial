@@ -16,14 +16,14 @@
 	</properties>
 
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld.servlet</artifactId>
-			<version>2.4.0.Final</version>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.4.8.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
@@ -37,7 +37,7 @@
 			<version>6.0</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -51,20 +51,20 @@
 			<version>5.2.3.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.3.0.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.19</version>
-        </dependency>
-		
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.19</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
