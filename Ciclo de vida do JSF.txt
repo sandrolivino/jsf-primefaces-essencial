@@ -1,0 +1,7 @@
+Fases:
+1 - Restaurar visão;
+2 - Aplicar valores da requisição;
+3 - Processar requisições;
+4 - Atualizar os valores do modelo;
+5 - Invocar a aplicação;
+6 - Renderizar a resposta.

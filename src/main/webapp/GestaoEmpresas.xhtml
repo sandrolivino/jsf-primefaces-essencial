@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<meta charset="UTF-8" />
@@ -10,6 +11,7 @@
 	<h:outputStylesheet library="algaworks" name="estilo.css" />
 
 </h:head>
+
 <h:body>
 
 	<header>
@@ -19,99 +21,86 @@
 	<div id="conteudo">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputLabel value="Razão social: " for="razaoSocial" />
+				<p:outputLabel value="Razão social: " for="razaoSocial" />
 				<h:panelGroup>
-					<h:inputText id="razaoSocial"
+					<p:inputText id="razaoSocial"
 						value="#{gestaoEmpresasBean.empresa.razaoSocial}"
 						label="Razão Social:" required="true" />
-					<h:message for="razaoSocial" />
+					<p:message for="razaoSocial" />
 				</h:panelGroup>
 
-				<h:outputLabel value="Nome fantasia: " for="nomeFantasia" />
-				<h:inputText id="nomeFantasia"
-					value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
+				<p:outputLabel value="Nome fantasia: " for="nomeFantasia" />
+				<p:inputText id="nomeFantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
 
 
 				<h:outputLabel value="Tipo empresa" for="tipo" />
 				<h:panelGroup>
-					<h:selectOneMenu id="tipo"
+					<p:selectOneMenu id="tipo"
 						value="#{gestaoEmpresasBean.empresa.tipo}" label="Tipo de Empresa" required="true">
 						<f:selectItem itemLabel="Selecione..." />
 						<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
 							var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
 							itemValue="#{tipoEmpresa}" />
-					</h:selectOneMenu>
+					</p:selectOneMenu>
 					<h:message for="tipo" />
 				</h:panelGroup>
 
-				<h:outputLabel value="Data fundação: " for="dataFundacao" />
+				<p:outputLabel value="CNPJ: " for="cnpj" />
 				<h:panelGroup>
-					<h:inputText id="dataFundacao"
-						value="#{gestaoEmpresasBean.empresa.dataFundacao}"
-						label="Data fundação">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:inputText>
-
-					<h:message for="dataFundacao" />
-				</h:panelGroup>
-
-				<h:outputLabel value="CNPJ: " for="cnpj" />
-				<h:panelGroup>
-					<h:inputText id="cnpj"
+					<p:inputText id="cnpj"
 						value="#{gestaoEmpresasBean.empresa.cnpj}"
 						label="CNPJ">
 						<f:validateLength minimum="18" maximum="18" />
-					</h:inputText>
+					</p:inputText>
 
-					<h:message for="cnpj" />
+					<p:message for="cnpj" />
 				</h:panelGroup>
 				
-				<h:outputLabel value="Faturamento: " for="faturamento" />
+				<p:outputLabel value="Data fundação: " for="dataFundacao" />
 				<h:panelGroup>
-					<h:inputText id="faturamento"
+					<p:inputText id="dataFundacao"
+						value="#{gestaoEmpresasBean.empresa.dataFundacao}"
+						label="Data fundação">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputText>
+
+					<p:message for="dataFundacao" />
+				</h:panelGroup>
+				
+				<p:outputLabel value="Faturamento: " for="faturamento" />
+				<h:panelGroup>
+					<p:inputText id="faturamento"
 						value="#{gestaoEmpresasBean.faturamento}" label="Faturamento">
 						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 					
 					<f:validateDoubleRange minimum="0" />
-					</h:inputText>
+					</p:inputText>
 
-					<h:message for="faturamento" />
+					<p:message for="faturamento" />
 				</h:panelGroup>
 
 				<h:outputLabel />
-				<h:commandButton value="Salvar"
-					actionListener="#{gestaoEmpresasBean.salvar}" />
+				<p:commandButton value="Salvar"
+					actionListener="#{gestaoEmpresasBean.salvar}" update="@form" />
 
 				<h:outputLabel />
-				<h:commandLink value="Ajuda?" action="#{gestaoEmpresasBean.ajuda}" />
+				<p:commandLink value="Ajuda?" action="#{gestaoEmpresasBean.ajuda}" />
 
 			</h:panelGrid>
 
-			<h:dataTable value="#{[0, 0, 0, 0]}">
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Razão social" />
-					</f:facet>
-
+			<p:dataTable value="#{[0, 0, 0, 0]}">
+				<p:column headerText="Razão Social">
 					<h:outputText value="Algaworks treinamentos LTDA" />
-				</h:column>
+				</p:column>
 
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Nome Fantasia" />
-					</f:facet>
+				<p:column headerText="Nome Fantasia">
+					<h:outputText value="Algaworks Sistemas e Soluções" />
+				</p:column>
 
-					<h:outputText value="Algaworks treinamentos LTDA" />
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Tipo Empresa" />
-					</f:facet>
-
-					<h:outputText value="Algaworks treinamentos LTDA" />
-				</h:column>
-			</h:dataTable>
+				<p:column headerText="Tipo Empresa">
+					<h:outputText value="Comércio e Serviços" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</div>
 
