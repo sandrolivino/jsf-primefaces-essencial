@@ -8,3 +8,6 @@ CTRL + SHIFT + s: 									salva todos os arquivos alterados
 ALT + SHIFT + s: 									atalho para a função Generate Gatters and Setters, Generate Equals, toString() etc. 
 CTRL + SHIFT + r:									Open Resource.. Para pesquisar arquivos.
 (texto selecionado) + CTRL + ALT + Seta para baixo:	Copia o texto selecionado para a linha de baixo.
+(texto selecionado) + CTRL + k:						Vai navegando pelas strings semelhantes à selecionada. Para conferir a grafia
+ALT + Seta para baixo ou para cima:					Move a linha selecionada para baixo ou para cima.
+CTRL + SHIFT + x:									Passa o texto de minúsculo para maiúsculo.
