@@ -1,9 +1,10 @@
 Atalhos do Eclipse
 
-CTRL + SHIFT + f: 	para formatar o arquivo (classes, interfaces, xmls etc.)
-CTRL + SHIFT + o: 	faz os imports que estão faltando
-CTRL + m: 			expande a área de edição da IDE.
-CTRL + s: 			salva o arquivo alterado
-CTRL + SHIFT + s: 	salva todos os arquivos alterados
-ALT + SHIFT + s: 	atalho para a função Generate Gatters and Setters, Generate Equals, toString() etc. 
-CTRL + SHIFT + r:	Open Resource.. Para pesquisar arquivos.
+CTRL + SHIFT + f: 									para formatar o arquivo (classes, interfaces, xmls etc.)
+CTRL + SHIFT + o: 									faz os imports que estão faltando
+CTRL + m: 											expande a área de edição da IDE.
+CTRL + s: 											salva o arquivo alterado
+CTRL + SHIFT + s: 									salva todos os arquivos alterados
+ALT + SHIFT + s: 									atalho para a função Generate Gatters and Setters, Generate Equals, toString() etc. 
+CTRL + SHIFT + r:									Open Resource.. Para pesquisar arquivos.
+(texto selecionado) + CTRL + ALT + Seta para baixo:	Copia o texto selecionado para a linha de baixo.
