@@ -16,7 +16,7 @@
 		</f:metadata>
 
 		<h:form>
-			<p:messages autoUpdate="true" />
+			<p:messages id="messages" autoUpdate="true" />
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -35,7 +35,9 @@
 					<p:commandButton value="Nova" icon="fa fa-plus"
 						actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
 						oncomplete="PF('empresaDialogWidgetVar').show()"
-						update="empresaDialog" process="@this" />
+						update="empresaDialog" process="@this">
+						<p:resetInput target="empresaDialog" />
+					</p:commandButton>
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
