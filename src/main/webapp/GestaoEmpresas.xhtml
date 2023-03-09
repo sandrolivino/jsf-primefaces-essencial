@@ -28,6 +28,41 @@
 
 	<div id="conteudo">
 		<h:form>
+
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText placeholder="Digite aqui um termo para pesquisa..."
+						size="25" />
+
+					<p:spacer width="1" height="22"
+						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
+
+					<p:commandButton value="Pesquisar" icon="fa fa-search" />
+
+					<p:spacer width="1" height="22"
+						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
+
+					<p:commandButton value="Nova" icon="fa fa-plus" />
+
+					<p:spacer width="1" height="22"
+						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
+
+					<p:commandButton title="Editar" icon="fa fa-edit" />
+
+					<p:commandButton title="Excluir" icon="fa fa-trash" />
+
+					<p:spacer width="1" height="22"
+						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
+
+					<p:commandButton title="Exportar para o Excel"
+						icon="fa fa-file-excel-o" />
+
+				</f:facet>
+
+			</p:toolbar>
+
+			<p:spacer height="20px" />
+
 			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
 				var="empresa" emptyMessage="Nenhuma empresa cadastrada..."
 				paginator="true" rows="5" paginatorPosition="bottom">
@@ -35,7 +70,8 @@
 					<h:outputText value="#{empresa.razaoSocial}" />
 				</p:column>
 
-				<p:column headerText="Nome Fantasia" sortBy="#{empresa.nomeFantasia}">
+				<p:column headerText="Nome Fantasia"
+					sortBy="#{empresa.nomeFantasia}">
 					<h:outputText value="#{empresa.nomeFantasia}" />
 				</p:column>
 
@@ -43,7 +79,8 @@
 					<h:outputText value="#{empresa.tipo}" />
 				</p:column>
 
-				<p:column headerText="Ramo Atividade" sortBy="#{empresa.ramoAtividade.descricao}">
+				<p:column headerText="Ramo Atividade"
+					sortBy="#{empresa.ramoAtividade.descricao}">
 					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 				</p:column>
 
