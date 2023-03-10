@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="WEB-INF/template/Layout.xhtml">
-
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	xmlns:p="http://primefaces.org/ui"
+ 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+ 	template="WEB-INF/template/Layout.xhtml">
+	
 	<ui:define name="titulo">
-	Cadastro de Empresas
-</ui:define>
+		Cadastro de Empresas
+	</ui:define>
 
 	<ui:define name="conteudo">
 		<f:metadata>
@@ -26,13 +26,13 @@
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
-					<p:commandButton value="Pesquisar" icon="fa fa-search"
+					<p:commandButton value="Pesquisar" icon="fas fa-search"
 						actionListener="#{gestaoEmpresasBean.pesquisar}"
 						update="empresasDataTable messages" process="@this termoPesquisa" />
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
-					<p:commandButton value="Nova" icon="fa fa-plus"
+					<p:commandButton value="Nova" icon="fas fa-plus"
 						actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
 						oncomplete="PF('empresaDialogWidgetVar').show()"
 						update="empresaDialog" process="@this">
@@ -42,7 +42,7 @@
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
-					<p:commandButton title="Editar" icon="fa fa-edit"
+					<p:commandButton title="Editar" icon="fas fa-wrench"
 						disabled="#{not gestaoEmpresasBean.empresaSeleciona}"
 						actionListener="#{gestaoEmpresasBean.prepararEdicao}"
 						oncomplete="PF('empresaDialogWidgetVar').show()"
@@ -65,7 +65,7 @@
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
 					<p:commandButton title="Exportar para o Excel"
-						icon="fa fa-file-excel-o" ajax="false">
+						icon="fas fa-file-download" ajax="false">
 						<p:dataExporter type="xls" target="empresasDataTable"
 							fileName="Empresas" />
 					</p:commandButton>
@@ -154,5 +154,4 @@
 			</p:dialog>
 		</h:form>
 	</ui:define>
-
 </ui:composition>
