@@ -15,10 +15,10 @@
 			<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
 		</f:metadata>
 
-		<h:form>
+		<h:form id="frm">
 			<p:messages id="messages" autoUpdate="true" />
 
-			<p:toolbar>
+			<p:toolbar id="toolbar">
 				<f:facet name="left">
 					<p:inputText id="termoPesquisa"
 						placeholder="Digite aqui um termo para pesquisa..." size="30"
@@ -28,7 +28,7 @@
 
 					<p:commandButton value="Pesquisar" icon="fa fa-search"
 						actionListener="#{gestaoEmpresasBean.pesquisar}"
-						update="empresasDataTable" process="@this termoPesquisa" />
+						update="empresasDataTable messages" process="@this termoPesquisa" />
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
@@ -38,14 +38,24 @@
 						update="empresaDialog" process="@this">
 						<p:resetInput target="empresaDialog" />
 					</p:commandButton>
+
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
-					<p:commandButton title="Editar" icon="fa fa-edit" />
+					<p:commandButton title="Editar" icon="fa fa-edit"
+						disabled="#{not gestaoEmpresasBean.empresaSeleciona}"
+						actionListener="#{gestaoEmpresasBean.prepararEdicao}"
+						oncomplete="PF('empresaDialogWidgetVar').show()"
+						update="empresaDialog" process="@this">
+						<p:resetInput target="empresaDialog" />
+					</p:commandButton>
+
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
-					<p:commandButton title="Excluir" icon="fa fa-trash" />
+					<p:commandButton title="Excluir" icon="fa fa-trash"
+						disabled="#{not gestaoEmpresasBean.empresaSeleciona}" />
+
 					<p:spacer width="1" height="22"
 						style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
 
@@ -59,7 +69,13 @@
 			<p:dataTable id="empresasDataTable"
 				value="#{gestaoEmpresasBean.listaEmpresas}" var="empresa"
 				emptyMessage="Nenhuma informação a ser exibida" paginator="true"
-				rows="5" paginatorPosition="bottom">
+				rows="5" paginatorPosition="bottom" selectionMode="single"
+				selection="#{gestaoEmpresasBean.empresa}" rowKey="#{empresa.id}">
+
+				<p:ajax event="rowSelect" update="frm:toolbar" />
+
+				<p:ajax event="rowUnselect" update="frm:toolbar" />
+
 				<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
 					<h:outputText value="#{empresa.razaoSocial}" />
 				</p:column>
@@ -74,12 +90,17 @@
 
 				<p:column headerText="Ramo atividade">
 					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
+
 				</p:column>
 			</p:dataTable>
 
 			<p:dialog id="empresaDialog" header="Nova empresa"
 				widgetVar="empresaDialogWidgetVar" modal="true" resizable="false"
 				closeOnEscape="true">
+				<p:messages id="empresaMessages" />
+
+				<p:defaultCommand target="salvarCommandButton" scope="empresaDialog" />
+
 				<h:panelGrid id="empresaPanelGrid" columns="2"
 					rendered="#{gestaoEmpresasBean.empresa ne null}">
 					<p:outputLabel value="Razão social: " for="razaoSocial" />
@@ -116,10 +137,10 @@
 						itemValue="#{ramoAtividade}" />
 
 					<h:outputLabel />
-					<p:commandButton value="Salvar"
+					<p:commandButton id="salvarCommandButton" value="Salvar"
 						actionListener="#{gestaoEmpresasBean.salvar}"
-						update="empresasDataTable empresaPanelGrid"
-						oncomplete="PF('empresaDialogWidgetVar').hide()"
+						update="empresasDataTable empresaPanelGrid empresaMessages"
+						oncomplete="if (!args.validationFailed) PF('empresaDialogWidgetVar').hide()"
 						process="empresaDialog" />
 				</h:panelGrid>
 			</p:dialog>
