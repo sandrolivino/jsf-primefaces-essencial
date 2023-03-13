@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
- 	xmlns:h="http://xmlns.jcp.org/jsf/html"
- 	xmlns:f="http://xmlns.jcp.org/jsf/core"
- 	xmlns:p="http://primefaces.org/ui"
- 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
- 	template="WEB-INF/template/Layout.xhtml">
-	
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="WEB-INF/template/Layout.xhtml">
+
 	<ui:define name="titulo">
 		Cadastro de Empresas
 	</ui:define>
@@ -16,7 +16,9 @@
 		</f:metadata>
 
 		<h:form id="frm">
-			<p:messages id="messages" autoUpdate="true" />
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<p:growl id="message" showDetail="true" />
 
 			<p:toolbar id="toolbar">
 				<f:facet name="left">
@@ -35,7 +37,7 @@
 					<p:commandButton value="Nova" icon="fas fa-plus"
 						actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
 						oncomplete="PF('empresaDialogWidgetVar').show()"
-						update="empresaDialog" process="@this">
+						update="messages empresaDialog" process="@this">
 						<p:resetInput target="empresaDialog" />
 					</p:commandButton>
 
@@ -57,8 +59,9 @@
 						disabled="#{not gestaoEmpresasBean.empresaSeleciona}"
 						actionListener="#{gestaoEmpresasBean.excluir}"
 						update="messages empresasDataTable toolbar" process="@this">
-						<p:confirm icon="ui-icon-alert" header="Confirmação de exclusão"
-							message="Deseja mesmo excluir a empresa?" />
+						<p:confirm icon="fas fa-exclamation"
+							header="Confirmação de exclusão"
+							message="Posso excluir a empresa?" />
 					</p:commandButton>
 
 					<p:spacer width="1" height="22"
@@ -69,6 +72,7 @@
 						<p:dataExporter type="xls" target="empresasDataTable"
 							fileName="Empresas" />
 					</p:commandButton>
+
 				</f:facet>
 			</p:toolbar>
 
@@ -152,6 +156,17 @@
 						process="empresaDialog" />
 				</h:panelGrid>
 			</p:dialog>
+
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				responsive="true" width="350">
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no ui-button-flat" />
+				<p:commandButton value="Yes" type="button"
+					styleClass="ui-confirmdialog-yes" />
+			</p:confirmDialog>
+
+
 		</h:form>
 	</ui:define>
 </ui:composition>
